@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
-import razorpay
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)

@@ -51,28 +51,6 @@ def cost_cal():
         return "Invalid request method.", 405
 
 
-
-
-
-
-
-
-razorpay_client = razorpay.Client(auth=("YOUR_KEY_ID", "YOUR_KEY_SECRET"))
-
-@app.route('/create-order', methods=['POST','GET'])
-def create_order():
-    data = {
-        "amount": 50000,  # Amount in paise (₹500.00)
-        "currency": "INR",
-        "receipt": "order_rcptid_11",
-    }
-    try:
-        order = razorpay_client.order.create(data)
-        return jsonify(order)
-    except Exception as e:
-        return str(e)
-
-
 # Run the app
 if __name__ == "__main__":
     app.run()

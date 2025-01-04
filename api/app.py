@@ -1,9 +1,11 @@
-from flask import Flask,render_template,request
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, request, jsonify
+import mysql.connector
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+
+# Replace SQLite config with MySQL config
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:H%40rsh976@localhost/cost_bot'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -14,7 +16,6 @@ class Data(db.Model):
 
     def __repr__(self):
         return f"<Station {self.Station_Name}, Line {self.Line}>"
-
 
 @app.route("/")
 def main():
